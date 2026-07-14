@@ -1,5 +1,5 @@
 # FIFA
-Here is the final, completely unified block containing your entire production-ready README.md file. You can copy this exact block directly into your project:
+
 ```markdown
 # ⚽ FIFA World Cup 2026™ Omnishield AI Core
 
