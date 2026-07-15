@@ -13,7 +13,7 @@ from core.engine import analyze_tournament_vectors
 from core.prompts import get_omnishield_orchestration_prompt
 
 # ==============================================================================
-# 1. ACCESSIBILITY, GEMINI GLOW EDGES & LIGHT/DARK INTERACTIVE STYLING MATRIX
+# 1. ACCESSIBILITY, GEMINI GLOW EDGES & NATIVE INTERACTIVE STYLING MATRIX
 # ==============================================================================
 st.set_page_config(
     page_title="FIFA World Cup 2026™ Omnishield AI", 
@@ -22,59 +22,20 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Core layout styling injection layer
+# Core layout styling injection layer from your configuration files
 st.markdown(COMPLIANT_CSS, unsafe_allow_html=True)
 
-# Advanced CSS injection providing glowing interfaces, light-mode text visibility overrides, and Gemini-style aura borders
+# Cleaned CSS injection providing localized glowing highlights and sidebars without breaking text contrast
 st.markdown("""
 <style>
-    /* Absolute visibility safety layer ensuring no characters vanish under light mode templates */
-    html, body, [data-testid="stWidgetLabel"], p, h1, h2, h3, h4, h5, h6, span, label, div {
-        color: var(--dynamic-text-color, #0F172A) !important;
-    }
-    
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --dynamic-text-color: #F8FAFC;
-            --gemini-aura-glow: linear-gradient(180deg, rgba(74, 144, 226, 0.25) 0%, rgba(144, 19, 254, 0.25) 50%, rgba(245, 166, 35, 0.1) 100%);
-            --matrix-card-bg: #1E293B;
-            --neon-border: #4A90E2;
-            --neon-shadow: rgba(74, 144, 226, 0.4);
-        }
-    }
-    @media (prefers-color-scheme: light) {
-        :root {
-            --dynamic-text-color: #0F172A;
-            --gemini-aura-glow: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
-            --matrix-card-bg: #F8FAFC;
-            --neon-border: #2563EB;
-            --neon-shadow: rgba(37, 99, 235, 0.15);
-        }
-    }
-
-    /* Gemini Ambient Sidebar/Screen Glow Layout Wrappers */
+    /* Gemini Ambient Sidebar Glow Map Layout Wrapper */
     [data-testid="stSidebar"] {
-        background: var(--gemini-aura-glow) !important;
-        border-right: 2px solid var(--neon-border) !important;
-        box-shadow: 5px 0 25px var(--neon-shadow) !important;
+        background: linear-gradient(180deg, rgba(74, 144, 226, 0.12) 0%, rgba(144, 19, 254, 0.12) 50%, rgba(245, 166, 35, 0.05) 100%) !important;
+        border-right: 2px solid #4A90E2 !important;
+        box-shadow: 5px 0 25px rgba(74, 144, 226, 0.3) !important;
     }
 
-    /* Glowing Screen Diagnostic Framework Container */
-    .glowing-matrix-display {
-        background-color: var(--matrix-card-bg) !important;
-        border: 2px solid var(--neon-border) !important;
-        border-radius: 12px !important;
-        padding: 24px !important;
-        margin-bottom: 20px !important;
-        box-shadow: 0 0 20px var(--neon-shadow) !important;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .glowing-matrix-display:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 35px var(--neon-border) !important;
-    }
-
-    /* Interactive Premium High-Glow Action Controls */
+    /* Localized Interactive Premium High-Glow Action Controls */
     .stButton>button {
         background: linear-gradient(135deg, #4A90E2 0%, #9013FE 50%, #F5A623 100%) !important;
         color: #FFFFFF !important;
@@ -150,7 +111,6 @@ with st.sidebar:
 # ==============================================================================
 # 5. DATA INGESTION & DIAGNOSTIC INTERFACE PANELS
 # ==============================================================================
-st.markdown('<div class="glowing-matrix-display">', unsafe_allow_html=True)
 left_panel, right_panel = st.columns(2)
 
 with left_panel:
@@ -195,11 +155,11 @@ with right_panel:
     st.subheader("📊 Cross-Vector Diagnostic Readout")
     st.markdown(f"""
     <div class="matrix-grid">
-        <div class="status-card" style="border: 1px solid var(--neon-border); padding: 15px; border-radius: 8px;">
+        <div class="status-card" style="border: 1px solid #4A90E2; padding: 15px; border-radius: 8px; box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);">
             <h5 style="margin: 0 0 10px 0;">Computed Operational Index</h5>
             <h2 style="margin: 0;">{analytics['operational_index']}%</h2>
         </div>
-        <div class="status-card" style="border: 1px solid var(--neon-border); padding: 15px; border-radius: 8px; margin-top: 15px;">
+        <div class="status-card" style="border: 1px solid #4A90E2; padding: 15px; border-radius: 8px; margin-top: 15px; box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);">
             <h5 style="margin: 0 0 10px 0;">Safety Infrastructure Status</h5>
             <h2 style="margin: 0; font-size: 1.1rem; line-height: 1.4; color: {'#ff7b72' if analytics['operational_index'] > 75 else '#f1e05a' if analytics['operational_index'] > 40 else '#56d364'};">
                 {analytics['safety_tier']}
@@ -207,7 +167,6 @@ with right_panel:
         </div>
     </div>
     """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
 
 # ==============================================================================
 # 6. GENAI EXECUTION PATHWAY INFRASTRUCTURE
@@ -246,4 +205,4 @@ if trigger_pass:
             except Exception as exception_log:
                 logger.error("Inference execution loop failure: %s", str(exception_log))
                 st.error(f"Execution Error during prompt inference: {exception_log}")
-    
+                
