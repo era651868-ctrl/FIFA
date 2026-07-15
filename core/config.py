@@ -31,4 +31,3 @@ COMPLIANT_CSS = """
     .status-card h2 { margin: 8px 0 0 0; font-size: 1.8rem; color: #58a6ff; }
 </style>
 """
-
